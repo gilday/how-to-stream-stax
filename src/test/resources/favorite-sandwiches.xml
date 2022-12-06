@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<fovorite-sandwiches>
+    <favorite-sandwich>
+        <name>Luca Brasi</name>
+        <restaurant>
+            <name>Taliercio's Gourmet Deli</name>
+            <street>500 NJ-35</street>
+            <city>Red Bank</city>
+            <state>NJ</state>
+            <zip>07701</zip>
+        </restaurant>
+        <description>
+            Chicken cutlet, long hot peppers, burrata, and vodka sauce.
+        </description>
+    </favorite-sandwich>
+    <favorite-sandwich>
+        <name>Fat Moon</name>
+        <restaurant>
+            <name>R U Hungry</name>
+            <street>95 Hamilton St</street>
+            <city>New Brunswick</city>
+            <state>NJ</state>
+            <zip>08901</zip>
+        </restaurant>
+        <description>
+            Chicken fingers, bacon, egg, lettuce, tomato, french fries, mayo and ketchup.
+        </description>
+    </favorite-sandwich>
+    <favorite-sandwich>
+        <name>The Porketta</name>
+        <restaurant>
+            <name>DiPasquale's</name>
+            <street>500 Harborview Drive</street>
+            <city>Baltimore</city>
+            <state>MD</state>
+            <zip>21230</zip>
+        </restaurant>
+        <description>
+            Italian Seasoned Roasted Pork w/Provolone Cheese, Sautéed Onions, Olive Oil, Grated Cheese &amp; Rapini.
+        </description>
+    </favorite-sandwich>
+    <favorite-sandwich>
+        <name>The Neighborhood Bird</name>
+        <restaurant>
+            <name>Ekiben</name>
+            <street>1622 Eastern Ave</street>
+            <city>Baltimore</city>
+            <state>MD</state>
+            <zip>21231</zip>
+        </restaurant>
+        <description>
+            Taiwanese curry fried chicken thigh topped with spicy sambal mayo, pickles, and fresh herbs. Comes spicy or mild.
+        </description>
+    </favorite-sandwich>
+    <favorite-sandwich>
+        <name>London Broil</name>
+        <restaurant>
+            <name>bon fresco</name>
+            <street>6945 Oakland Mills Rd</street>
+            <city>Columbia</city>
+            <state>MD</state>
+            <zip>21045</zip>
+        </restaurant>
+        <description>
+            Charbroiled medium-rare steak, dijonnaise, provolone, mixed greens, red onions, ciabatta *oven-warmed
+        </description>
+    </favorite-sandwich>
+</fovorite-sandwiches>
