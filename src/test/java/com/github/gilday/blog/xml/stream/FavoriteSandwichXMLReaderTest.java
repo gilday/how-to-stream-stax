@@ -10,25 +10,29 @@ import java.util.stream.Collectors;
 import org.junit.jupiter.api.Test;
 
 /** Unit tests for {@link FavoriteSandwich}. */
-final class FavoriteSandwichTest {
+public final class FavoriteSandwichXMLReaderTest {
 
   @Test
   void stream_all_valid_sandwiches() throws IOException {
-    try (var is = FavoriteSandwichTest.class.getResourceAsStream("/favorite-sandwiches.xml");
-        var sandwiches = FavoriteSandwich.fromXML(is)) {
+    final FavoriteSandwichXMLReader reader = new FavoriteSandwichXMLReader();
+    try (var is =
+            FavoriteSandwichXMLReaderTest.class.getResourceAsStream("/favorite-sandwiches.xml");
+        var sandwiches = reader.readXML(is)) {
       final Map<String, Long> countByState =
           sandwiches.collect(
               groupingBy(sandwich -> sandwich.restaurant().state(), Collectors.counting()));
 
       final Map<String, Long> expected = Map.of("NJ", 2L, "MD", 3L);
-      assertThat(countByState).containsExactlyEntriesOf(expected);
+      assertThat(countByState).containsExactlyInAnyOrderEntriesOf(expected);
     }
   }
 
   @Test
   void stream_some_valid_sandwiches() throws IOException {
-    try (var is = FavoriteSandwichTest.class.getResourceAsStream("/favorite-sandwiches.xml");
-        var sandwiches = FavoriteSandwich.fromXML(is)) {
+    final FavoriteSandwichXMLReader reader = new FavoriteSandwichXMLReader();
+    try (var is =
+            FavoriteSandwichXMLReaderTest.class.getResourceAsStream("/favorite-sandwiches.xml");
+        var sandwiches = reader.readXML(is)) {
       final Optional<FavoriteSandwich> first = sandwiches.findFirst();
 
       final Restaurant taliercios =
