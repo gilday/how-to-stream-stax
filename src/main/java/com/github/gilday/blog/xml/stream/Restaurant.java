@@ -1,5 +1,6 @@
 package com.github.gilday.blog.xml.stream;
 
+import com.google.auto.value.AutoBuilder;
 import java.util.Objects;
 
 /**
@@ -17,7 +18,7 @@ public record Restaurant(String name, String street, String city, String state, 
    * @return new {@link Builder}
    */
   public static Builder builder() {
-    return new Builder();
+    return new AutoBuilder_Restaurant_Builder();
   }
 
   /**
@@ -32,13 +33,8 @@ public record Restaurant(String name, String street, String city, String state, 
   }
 
   /** Builder companion class for {@link Restaurant}. */
-  public static final class Builder {
-
-    private String name;
-    private String street;
-    private String city;
-    private String state;
-    private String zip;
+  @AutoBuilder(ofClass = Restaurant.class)
+  public static abstract class Builder {
 
     /**
      * Sets the restaurant name.
@@ -46,10 +42,7 @@ public record Restaurant(String name, String street, String city, String state, 
      * @param name value to set
      * @return this
      */
-    public Builder name(String name) {
-      this.name = name;
-      return this;
-    }
+    public abstract Builder name(String name);
 
     /**
      * Sets the restaurant street address.
@@ -57,10 +50,7 @@ public record Restaurant(String name, String street, String city, String state, 
      * @param street value to set
      * @return this
      */
-    public Builder street(String street) {
-      this.street = street;
-      return this;
-    }
+    public abstract Builder street(String street);
 
     /**
      * Sets the city in which the restaurant is located.
@@ -68,10 +58,7 @@ public record Restaurant(String name, String street, String city, String state, 
      * @param city value to set
      * @return this
      */
-    public Builder city(String city) {
-      this.city = city;
-      return this;
-    }
+    public abstract Builder city(String city);
 
     /**
      * Sets the state in which the restaurant is located.
@@ -79,10 +66,7 @@ public record Restaurant(String name, String street, String city, String state, 
      * @param state value to set
      * @return this
      */
-    public Builder state(String state) {
-      this.state = state;
-      return this;
-    }
+    public abstract Builder state(String state);
 
     /**
      * Sets the zip code for the address where the restaurant is located.
@@ -90,18 +74,13 @@ public record Restaurant(String name, String street, String city, String state, 
      * @param zip value to set
      * @return this
      */
-    public Builder zip(String zip) {
-      this.zip = zip;
-      return this;
-    }
+    public abstract Builder zip(String zip);
 
     /**
      * Uses the values set thus far to build a new {@link FavoriteSandwich}.
      *
      * @return new {@link FavoriteSandwich}
      */
-    public Restaurant build() {
-      return new Restaurant(name, street, city, state, zip);
-    }
+    public abstract Restaurant build();
   }
 }

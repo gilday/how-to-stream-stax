@@ -1,5 +1,6 @@
 package com.github.gilday.blog.xml.stream;
 
+import com.google.auto.value.AutoBuilder;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
@@ -26,7 +27,7 @@ public record FavoriteSandwich(String name, Restaurant restaurant, String descri
   }
 
   public static Builder builder() {
-    return new Builder();
+    return new AutoBuilder_FavoriteSandwich_Builder();
   }
 
   /**
@@ -38,29 +39,15 @@ public record FavoriteSandwich(String name, Restaurant restaurant, String descri
     Objects.requireNonNull(description);
   }
 
-  public static final class Builder {
+  @AutoBuilder(ofClass = FavoriteSandwich.class)
+  public abstract static class Builder {
 
-    private String name;
-    private Restaurant restaurant;
-    private String description;
+    public abstract Builder name(String value);
 
-    public Builder name(final String value) {
-      this.name = value;
-      return this;
-    }
+    public abstract Builder restaurant(Restaurant restaurant);
 
-    public Builder restaurant(final Restaurant restaurant) {
-      this.restaurant = restaurant;
-      return this;
-    }
+    public abstract Builder description(String description);
 
-    public Builder description(final String description) {
-      this.description = description;
-      return this;
-    }
-
-    public FavoriteSandwich build() {
-      return new FavoriteSandwich(name, restaurant, description);
-    }
+    public abstract FavoriteSandwich build();
   }
 }
