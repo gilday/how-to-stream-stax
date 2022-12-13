@@ -3,6 +3,7 @@ package com.github.gilday.blog.xml.stream;
 import com.github.gilday.blog.xml.stream.FavoriteSandwich.Builder;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Objects;
 import java.util.Spliterator;
 import java.util.function.Consumer;
 import java.util.stream.Stream;
@@ -14,19 +15,40 @@ import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.events.StartElement;
 import javax.xml.stream.events.XMLEvent;
 
-/** */
-public final class FavoriteSandwichXMLReader {
+/** Used to parse {@link FavoriteSandwich} records from XML input. */
+public final class FavoriteSandwichXMLParser {
 
   private final XMLInputFactory factory;
 
-  public FavoriteSandwichXMLReader() {
-    factory = XMLInputFactory.newFactory();
+  /**
+   * Creates a new parser with a default {@link XMLInputFactory} that does not resolve external
+   * entities (to prevent XXE attacks).
+   */
+  public FavoriteSandwichXMLParser() {
+    this(XMLInputFactory.newFactory());
     factory.setProperty(XMLInputFactory.SUPPORT_DTD, false);
     factory.setProperty(XMLInputFactory.IS_SUPPORTING_EXTERNAL_ENTITIES, false);
     factory.setProperty(XMLConstants.ACCESS_EXTERNAL_DTD, "");
   }
 
-  public Stream<FavoriteSandwich> readXML(final InputStream is) throws IOException {
+  /**
+   * Creates a new parser with the given {@link XMLInputFactory}.
+   *
+   * @param factory the factory to use for reading XML
+   */
+  public FavoriteSandwichXMLParser(final XMLInputFactory factory) {
+    this.factory = Objects.requireNonNull(factory);
+  }
+
+  /**
+   * Streams {@link FavoriteSandwich} records from an XML file where the root element is {@code
+   * favorite-sandwiches} and contains a list of {@code favorite-sandwich} element. Parses the XML
+   * stream-wise, so the returned stream may be arbitrarily large.
+   *
+   * @param is stream containing favorite sandwich XML data to parse
+   * @return new {@link Stream} of {@link FavoriteSandwich} records parsed from the XML
+   */
+  public Stream<FavoriteSandwich> stream(final InputStream is) throws IOException {
     final var spliterator = new FavoriteSandwichXMLSpliterator(is);
     return StreamSupport.stream(spliterator, false).onClose(spliterator::close);
   }

@@ -1,11 +1,7 @@
 package com.github.gilday.blog.xml.stream;
 
 import com.google.auto.value.AutoBuilder;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.UnsupportedEncodingException;
 import java.util.Objects;
-import java.util.stream.Stream;
 
 /**
  * @param name sandwich name
@@ -15,17 +11,8 @@ import java.util.stream.Stream;
 public record FavoriteSandwich(String name, Restaurant restaurant, String description) {
 
   /**
-   * Streams {@link FavoriteSandwich} records from an XML file where the root element is {@code
-   * favorite-sandwiches} and contains a list of {@code favorite-sandwich} element. Parses the XML
-   * stream-wise, so the returned stream may be arbitrarily large.
-   *
-   * @param is stream containing favorite sandwich XML data to parse
-   * @return new {@link Stream} of {@link FavoriteSandwich} records parsed from the XML
+   * @return new {@link Builder}
    */
-  public static Stream<FavoriteSandwich> fromXML(final InputStream is) throws IOException {
-    throw new UnsupportedEncodingException("Not Yet Supported");
-  }
-
   public static Builder builder() {
     return new AutoBuilder_FavoriteSandwich_Builder();
   }

@@ -34,7 +34,7 @@ public record Restaurant(String name, String street, String city, String state, 
 
   /** Builder companion class for {@link Restaurant}. */
   @AutoBuilder(ofClass = Restaurant.class)
-  public static abstract class Builder {
+  public abstract static class Builder {
 
     /**
      * Sets the restaurant name.
