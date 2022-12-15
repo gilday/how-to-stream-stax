@@ -16,8 +16,8 @@ public final class FavoriteSandwichXMLParserTest {
   void stream_all_valid_sandwiches() throws IOException {
     final FavoriteSandwichXMLParser reader = new FavoriteSandwichXMLParser();
     try (var is =
-            FavoriteSandwichXMLParserTest.class.getResourceAsStream("/favorite-sandwiches.xml");
-        var sandwiches = reader.stream(is)) {
+        FavoriteSandwichXMLParserTest.class.getResourceAsStream("/favorite-sandwiches.xml")) {
+      final var sandwiches = reader.stream(is);
       final Map<String, Long> countByState =
           sandwiches.collect(
               groupingBy(sandwich -> sandwich.restaurant().state(), Collectors.counting()));
@@ -31,8 +31,8 @@ public final class FavoriteSandwichXMLParserTest {
   void stream_some_valid_sandwiches() throws IOException {
     final FavoriteSandwichXMLParser reader = new FavoriteSandwichXMLParser();
     try (var is =
-            FavoriteSandwichXMLParserTest.class.getResourceAsStream("/favorite-sandwiches.xml");
-        var sandwiches = reader.stream(is)) {
+        FavoriteSandwichXMLParserTest.class.getResourceAsStream("/favorite-sandwiches.xml")) {
+      final var sandwiches = reader.stream(is);
       final Optional<FavoriteSandwich> first = sandwiches.findFirst();
 
       final Restaurant taliercios =
