@@ -77,7 +77,7 @@ public final class FavoriteSandwichXMLParser {
         }
         if (event.isStartElement()) {
           final StartElement startElement = event.asStartElement();
-          if (startElement.getName().getLocalPart().equals("favorite-sandwich")) {
+          if ("favorite-sandwich".equals(startElement.getName().getLocalPart())) {
             final FavoriteSandwich sandwich;
             try {
               sandwich = readSandwich();
